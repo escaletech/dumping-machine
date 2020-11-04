@@ -22,7 +22,7 @@ public class TimeBasedRecordConsumer implements RecordConsumer {
     private RecordWriter tombstoneWriter;
     private RecordWriter errorWriter;
 
-    private final String localPath = "./tmp/parquet/";
+    private final String localPath = "./parquet/";
 
     private final String topic;
     private final long firstTimestamp;

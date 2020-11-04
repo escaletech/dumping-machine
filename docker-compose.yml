@@ -75,4 +75,21 @@ services:
     - kafka-1
     - kafka-2
     - kafka-3
-
+  localstack:
+    image: localstack/localstack:latest
+    ports:
+      - "4566:4566"
+      - "4571:4571"
+      - "8082:8081"
+    environment:
+      - S3_PORT_EXTERNAL=4566
+      - HOSTNAME_EXTERNAL=localstack
+      - SERVICES=s3
+      - DATA_DIR=/var/lib/localstack
+      - PORT_WEB_UI=8081
+      - DOCKER_HOST=unix:///var/run/docker.sock
+      - HOST_TMP_FOLDER=/tmp/localstack
+    volumes:
+      - "./tmp/localstack/tmp:/tmp/localstack"
+      - "./tmp/localstack/data:/var/lib/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"

@@ -1,6 +1,7 @@
 package com.grupozap.dumping_machine.uploaders;
 
 import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
+import com.amazonaws.client.builder.AwsClientBuilder;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.PutObjectRequest;
@@ -19,7 +20,7 @@ public class S3Uploader implements Uploader {
 
     public void upload(String remotePath, String filename) {
         AmazonS3 s3Client = AmazonS3ClientBuilder.standard()
-                .withRegion(this.bucketRegion)
+                .withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration("https://localhost:8082", this.bucketRegion))
                 .withCredentials(new DefaultAWSCredentialsProviderChain())
                 .build();
 

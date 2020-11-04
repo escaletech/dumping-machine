@@ -1,0 +1,9 @@
+bootstrapServers: 127.0.0.1:9092,127.0.0.1:9093,127.0.0.1:9094
+schemaRegistryUrl: http://localhost:8081
+groupId: dumping-machine
+topics:
+- name: test-dumping-machine
+  type: S3Uploader
+  bucketName: bucket-1
+  bucketRegion: us-east-1
+  partitionForget: 3000
