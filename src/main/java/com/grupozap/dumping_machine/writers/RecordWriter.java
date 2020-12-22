@@ -22,7 +22,7 @@ public class RecordWriter {
         this.filename = filename;
 
         if(fileExists(path + filename))
-            throw new IOException("File already exists: " + path + filename);
+            delete(path + filename);
 
         this.writer = AvroParquetWriter.<GenericRecord>builder(new Path(path + filename))
                 .withSchema(schema)
@@ -52,5 +52,9 @@ public class RecordWriter {
 
     private boolean fileExists(String filePath) {
         return Files.exists(java.nio.file.Paths.get(filePath));
+    }
+
+    private boolean delete(String filePath) throws IOException {
+        return Files.deleteIfExists(java.nio.file.Paths.get(filePath));
     }
 }
