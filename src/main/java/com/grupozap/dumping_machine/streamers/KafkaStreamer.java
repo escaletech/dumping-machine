@@ -76,7 +76,7 @@ public class KafkaStreamer {
             } else if (topicProperty.getType().equals("S3Uploader")){
                 uploader = new S3Uploader(topicProperty.getBucketName(), topicProperty.getBucketRegion());
             } else {
-                uploader = new S3UploaderEncrypted(topicProperty.getBucketName(), topicProperty.getBucketRegion())
+                uploader = new S3UploaderEncrypted(topicProperty.getBucketName(), topicProperty.getBucketRegion());
             }
 
             TopicStreamer topicStreamer = new TopicStreamer(this.bootstrapServers, this.groupId, this.schemaRegistryUrl, this.sessionTimeout, uploader, topicProperty.getName(), topicProperty.getPoolTimeout(), topicProperty.getPartitionForget(), this.metadataPropertyName, this.partitionPattern, ms);
