@@ -6,6 +6,8 @@ import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 
+import java.io.File;
+
 public class S3UploaderEncrypted implements Uploader {
     private final String bucketName;
     private final String bucketRegion;
